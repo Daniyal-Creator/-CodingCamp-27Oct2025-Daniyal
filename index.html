@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 !DOCTYPE html>
+=======
+<!DOCTYPE html>
+>>>>>>> c3af203 (update ui/ux dan fitur histori serta tombol selesai (masih ada bug di dropdown detail))
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>To-Do List Saya</title>
 
     <link rel="stylesheet" href="style.css">
@@ -69,5 +74,190 @@
     </div>
 
     <script src="Javascript.js"></script>
+=======
+    <meta name="description" content="Aplikasi To-Do List modern untuk mengelola kegiatan harian Anda">
+    <title>My To-Do List - Kelola Kegiatan Anda</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="header-title">My To-Do List</h1>
+                <p class="header-subtitle">Kelola kegiatan Anda dengan mudah dan terorganisir</p>
+            </div>
+        </header>
+
+        <nav class="tab-navigation" role="tablist" aria-label="Navigasi kegiatan">
+            <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-active" id="tab-active" data-tab="active">
+                📋 Kegiatan Aktif
+                <span class="tab-badge" id="activeBadge">0</span>
+            </button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-history" id="tab-history" data-tab="history">
+                📊 Histori Selesai
+                <span class="tab-badge" id="historyBadge">0</span>
+            </button>
+        </nav>
+
+        <main id="main-content">
+            <div id="panel-active" class="tab-content active" role="tabpanel" aria-labelledby="tab-active" tabindex="0">
+                <div class="content">
+                    <div id="alertBox" class="alert" role="alert" aria-live="polite"></div>
+
+                    <section class="input-section" aria-labelledby="form-heading">
+                        <h2 id="form-heading" class="section-heading">Tambah Kegiatan Baru</h2>
+                        <form id="todoForm" novalidate>
+                            <div class="form-field">
+                                <label for="activity" id="activity-label" class="form-label">
+                                    Judul Kegiatan <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="activity" 
+                                    class="form-input"
+                                    placeholder="Contoh: Memasak untuk keluarga" 
+                                    required
+                                    aria-required="true"
+                                    aria-invalid="false"
+                                    aria-describedby="activity-hint activity-error"
+                                    maxlength="100"
+                                >
+                                <span id="activity-hint" class="form-hint">Maksimal 100 karakter</span>
+                                <span id="activity-error" class="form-error" role="alert"></span>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="description" id="description-label" class="form-label">
+                                    Deskripsi / Detail Kegiatan
+                                </label>
+                                <textarea 
+                                    id="description" 
+                                    class="form-input form-textarea"
+                                    placeholder="Tambahkan detail kegiatan Anda di sini...&#10;Contoh: Masak opor ayam 6 porsi untuk lebaran. Beli bumbu di pasar pagi, masak mulai jam 8 pagi."
+                                    aria-describedby="description-hint"
+                                    maxlength="500"
+                                ></textarea>
+                                <div class="form-footer">
+                                    <span id="description-hint" class="char-count">0 / 500</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="schedule" id="schedule-label" class="form-label">
+                                    Jadwal <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="datetime-local" 
+                                    id="schedule" 
+                                    class="form-input"
+                                    required
+                                    aria-required="true"
+                                    aria-invalid="false"
+                                    aria-describedby="schedule-error"
+                                >
+                                <span id="schedule-error" class="form-error" role="alert"></span>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="priority" id="priority-label" class="form-label">
+                                    Tingkat Kepentingan <span class="required">*</span>
+                                </label>
+                                <select 
+                                    id="priority" 
+                                    class="form-input"
+                                    required
+                                    aria-required="true"
+                                    aria-invalid="false"
+                                    aria-describedby="priority-error"
+                                >
+                                    <option value="">Pilih Prioritas</option>
+                                    <option value="penting">⭐ Penting</option>
+                                    <option value="lumayan">⚡ Lumayan Penting</option>
+                                    <option value="tidak">✅ Tidak Terlalu Penting</option>
+                                </select>
+                                <span id="priority-error" class="form-error" role="alert"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
+                                <span class="btn-text">Tambah Kegiatan</span>
+                            </button>
+                        </form>
+                    </section>
+
+                    <section aria-labelledby="filter-heading">
+                        <h3 id="filter-heading" class="section-title">Filter Berdasarkan Prioritas</h3>
+                        <div class="filter-section" role="group" aria-label="Filter prioritas">
+                            <button class="filter-btn active" data-filter="semua" aria-pressed="true">
+                                Semua
+                                <span class="count" id="count-semua">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="penting" aria-pressed="false">
+                                ⭐ Penting
+                                <span class="count" id="count-penting">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="lumayan" aria-pressed="false">
+                                ⚡ Lumayan
+                                <span class="count" id="count-lumayan">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="tidak" aria-pressed="false">
+                                ✅ Tidak Terlalu
+                                <span class="count" id="count-tidak">0</span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <section aria-labelledby="sort-heading">
+                        <h3 id="sort-heading" class="section-title">Urutkan Berdasarkan</h3>
+                        <div class="sort-section" role="group" aria-label="Urutkan kegiatan">
+                            <button class="sort-btn active" data-sort="priority" aria-pressed="true">
+                                Prioritas Tertinggi
+                            </button>
+                            <button class="sort-btn" data-sort="date-asc" aria-pressed="false">
+                                Waktu Terdekat
+                            </button>
+                            <button class="sort-btn" data-sort="date-desc" aria-pressed="false">
+                                Waktu Terjauh
+                            </button>
+                        </div>
+                    </section>
+
+                    <section aria-labelledby="todolist-heading">
+                        <h3 id="todolist-heading" class="sr-only">Daftar Kegiatan</h3>
+                        <div id="todoList" class="todo-list" role="list"></div>
+                    </section>
+                </div>
+            </div>
+
+            <div id="panel-history" class="tab-content" role="tabpanel" aria-labelledby="tab-history" tabindex="0" hidden>
+                <div class="content">
+                    <section class="stats-section" aria-labelledby="stats-heading">
+                        <h3 id="stats-heading" class="sr-only">Statistik Kegiatan</h3>
+                        <div class="stat-card">
+                            <div class="stats-content">
+                                <div class="stat-number" id="totalCompleted" aria-label="Total kegiatan selesai">0</div>
+                                <div class="stat-label">Total Selesai</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stats-content">
+                                <div class="stat-number" id="thisWeek" aria-label="Kegiatan selesai minggu ini">0</div>
+                                <div class="stat-label">Minggu Ini</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section aria-labelledby="history-heading">
+                        <h3 id="history-heading" class="section-title">Riwayat Kegiatan</h3>
+                        <div id="historyList" class="todo-list" role="list"></div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="JavaScript/Javascript.js"></script>
+>>>>>>> c3af203 (update ui/ux dan fitur histori serta tombol selesai (masih ada bug di dropdown detail))
 </body>
 </html>

@@ -1,0 +1,73 @@
+!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Saya</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✨ To-Do List</h1>
+            <p>Kelola kegiatan Anda dengan mudah dan terorganisir</p>
+        </div>
+
+        <div class="content">
+            <div id="alertBox" class="alert"></div>
+
+            <div class="input-section">
+                <h2 style="margin-bottom: 20px; color: #333;">Tambah Kegiatan Baru</h2>
+                <form id="todoForm">
+                    <div class="form-group">
+                        <label for="activity">Judul Kegiatan *</label>
+                        <input type="text" id="activity" placeholder="Contoh: Memasak" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Deskripsi / Detail Kegiatan</label>
+                        <textarea id="description" placeholder="Contoh: Masak opor ayam 6 porsi..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="schedule">Jadwal *</label>
+                        <input type="datetime-local" id="schedule" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Tingkat Kepentingan *</label>
+                        <select id="priority" required>
+                            <option value="">Pilih Prioritas</option>
+                            <option value="penting">⭐ Penting</option>
+                            <option value="lumayan">⚡ Lumayan Penting</option>
+                            <option value="tidak">✅ Tidak Terlalu Penting</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Tambah Kegiatan</button>
+                </form>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <h3 style="color: #333; margin-bottom: 15px;">Filter Berdasarkan Prioritas</h3>
+                <div class="filter-section">
+                    <button class="filter-btn active" onclick="filterTodos('semua')">Semua</button>
+                    <button class="filter-btn" onclick="filterTodos('penting')">⭐ Penting</button>
+                    <button class="filter-btn" onclick="filterTodos('lumayan')">⚡ Lumayan</button>
+                    <button class="filter-btn" onclick="filterTodos('tidak')">✅ Tidak Terlalu</button>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #333; margin-bottom: 15px;">Urutkan Berdasarkan</h3>
+                <div class="sort-section">
+                    <button class="sort-btn active" onclick="sortTodos('priority')">Prioritas Tertinggi</button>
+                    <button class="sort-btn" onclick="sortTodos('date-asc')">Waktu Terdekat</button>
+                    <button class="sort-btn" onclick="sortTodos('date-desc')">Waktu Terjauh</button>
+                </div>
+            </div>
+
+            <div id="todoList" class="todo-list"></div>
+        </div>
+    </div>
+
+    <script src="Javascript.js"></script>
+</body>
+</html>

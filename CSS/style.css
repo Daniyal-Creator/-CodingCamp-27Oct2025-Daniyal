@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
   * {
             margin: 0;
             padding: 0;
@@ -382,7 +382,7 @@
                 justify-content: center;
             }
         }
-=======
+
 :root {
   --primary-600: #2563EB;
   --primary-700: #1D4ED8;
@@ -1085,4 +1085,4 @@ body {
 .card-toggle:focus-visible {
   outline: 2px solid var(--primary-600);
   outline-offset: 2px;}
->>>>>>> c3af203 (update ui/ux dan fitur histori serta tombol selesai (masih ada bug di dropdown detail))
+
